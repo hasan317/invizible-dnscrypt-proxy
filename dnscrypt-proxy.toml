@@ -1,34 +1,34 @@
 ipv4_servers = true
-ipv6_servers = true
-require_dnssec = false
-require_nolog = false
-require_nofilter = false
-block_ipv6 = false
+ipv6_servers = false
+require_dnssec = true
+require_nolog = true
+require_nofilter = true
+block_ipv6 = true
 force_tcp = true
-server_names = ['adguard-dns', 'adguard-dns-ipv6', 'controld-block-malware-ad', 'dnsforge.de', 'dnsforge.de-ipv6', 'libredns-noads', 'mullvad-base-doh', 'sfw.scaleway-fr']
+server_names = ['dnscry.pt-geneva-ipv4', 'dnscry.pt-zurich-ipv4', 'dnscry.pt-munich-ipv4', 'dnscry.pt-prague-ipv4', 'scaleway-ams', 'scaleway-fr', 'nwps.fi', 'searx-se-ipv4', 'dnscry.pt-ikeja-ipv4', 'dnscry.pt-capetown02-ipv4', 'dnscry.pt-portedwards-ipv4', 'dnscry.pt-hongkong-ipv4', 'dnscry.pt-singapore02-ipv4', 'dnscry.pt-jakarta-ipv4', 'dnscry.pt-bangkok-ipv4', 'dnscry.pt-newyork-ipv4', 'dnscry.pt-halifax-ipv4', 'dnscry.pt-philadelphia-ipv4', 'dnscry.pt-ashburn-ipv4', 'dnscry.pt-allentown-ipv4']
 disabled_server_names = []
-listen_addresses = ['127.0.0.1:5354', '[::1]:5354']
+listen_addresses = ['127.0.0.1:5354']
 max_clients = 250
 #user_name = '0'
 dnscrypt_servers = true
-doh_servers = true
-odoh_servers = true
-timeout = 5000
+doh_servers = false
+odoh_servers = false
+timeout = 1000
 keepalive = 30
 netprobe_timeout = -1
 log_level = 2
 log_file = '/data/user/0/pan.alexander.tordnscrypt.stable/logs/DnsCrypt.log'
 use_syslog = false
 cert_refresh_delay = 240
-dnscrypt_ephemeral_keys = false
+dnscrypt_ephemeral_keys = true
 tls_disable_session_tickets = false
-bootstrap_resolvers = ['9.9.9.9:53', '[2620:fe::fe]:53']
-netprobe_address = '9.9.9.9:53'
+bootstrap_resolvers = ['45.11.45.11:53']
+netprobe_address = '45.11.45.11:53'
 block_unqualified = true
 block_undelegated = true
 reject_ttl = 10
-ignore_system_dns = false
-http3 = true
+ignore_system_dns = true
+http3 = false
 log_files_max_size = 1
 log_files_max_age = 7
 log_files_max_backups = 1
@@ -65,36 +65,41 @@ blocked_ips_file = 'ip-blacklist.txt'
 allowed_names_file = 'whitelist.txt'
 [sources]
 [sources.'public-resolvers']
-urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md', 'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/public-resolvers.md']
+urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md', 'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md', 'https://cdn.jsdelivr.net/gh/DNSCrypt/dnscrypt-resolvers@master/v3/public-resolvers.md']
 minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
 cache_file = 'public-resolvers.md'
-refresh_delay = 72
+refresh_delay = 73
 prefix = ''
 [sources.'relays']
-urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/relays.md', 'https://download.dnscrypt.info/resolvers-list/v3/relays.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/relays.md']
+urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/relays.md', 'https://download.dnscrypt.info/resolvers-list/v3/relays.md', 'https://cdn.jsdelivr.net/gh/DNSCrypt/dnscrypt-resolvers@master/v3/relays.md']
 cache_file = 'relays.md'
 minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
-refresh_delay = 72
-prefix = ''
-[sources.'odoh-servers']
-urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/odoh-servers.md', 'https://download.dnscrypt.info/resolvers-list/v3/odoh-servers.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/odoh-servers.md']
-cache_file = 'odoh-servers.md'
-minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
-refresh_delay = 72
-prefix = ''
-[sources.'odoh-relays']
-urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/odoh-relays.md', 'https://download.dnscrypt.info/resolvers-list/v3/odoh-relays.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/odoh-relays.md']
-cache_file = 'odoh-relays.md'
-minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
-refresh_delay = 72
+refresh_delay = 73
 prefix = ''
 [broken_implementations]
 fragments_blocked = ['cisco', 'cisco-ipv6', 'cisco-familyshield', 'cisco-familyshield-ipv6', 'cleanbrowsing-adult', 'cleanbrowsing-adult-ipv6', 'cleanbrowsing-family', 'cleanbrowsing-family-ipv6', 'cleanbrowsing-security', 'cleanbrowsing-security-ipv6']
 [anonymized_dns]
-skip_incompatible = false
+skip_incompatible = true
 routes = [
-{ server_name = 'adguard-dns', via=['anon-kama', 'anon-scaleway', 'anon-tiarap'] },
-{ server_name = 'sfw.scaleway-fr', via=['anon-kama', 'anon-serbica', 'anon-tiarap'] },
-{ server_name = 'adguard-dns-ipv6', via=['anon-ams-ipv6', 'anon-scaleway-ams-ipv6', 'anon-tiarap-ipv6'] }
+{ server_name='dnscry.pt-geneva-ipv4', via=['anon-cs-de', 'dnscry.pt-anon-amsterdam-ipv4'] },
+{ server_name='dnscry.pt-zurich-ipv4', via=['anon-cs-austria', 'dnscry.pt-anon-paris-ipv4'] },
+{ server_name='dnscry.pt-munich-ipv4', via=['anon-cs-belgium', 'dnscry.pt-anon-stockholm-ipv4'] },
+{ server_name='dnscry.pt-prague-ipv4', via=['anon-cs-serbia', 'dnscry.pt-anon-tirana-ipv4'] },
+{ server_name='scaleway-ams', via=['anon-cs-norway', 'dnscry.pt-anon-milan-ipv4'] },
+{ server_name='scaleway-fr', via=['anon-cs-milan', 'dnscry.pt-anon-madrid-ipv4'] },
+{ server_name='nwps.fi', via=['anon-cs-poland', 'dnscry.pt-anon-frankfurt-ipv4'] },
+{ server_name='searx-se-ipv4', via=['anon-cs-london', 'dnscry.pt-anon-prague-ipv4'] },
+{ server_name='dnscry.pt-ikeja-ipv4', via=['anon-cipherdns-ct1-za', 'anon-cipherdns-jb1-za'] },
+{ server_name='dnscry.pt-capetown02-ipv4', via=['dnscry.pt-anon-portedwards-ipv4', 'dnscry.pt-anon-capetown-ipv4'] },
+{ server_name='dnscry.pt-portedwards-ipv4', via=['anon-cipherdns-jb1-za', 'dnscry.pt-anon-ikeja-ipv4'] },
+{ server_name='dnscry.pt-hongkong-ipv4', via=['anon-cs-singapore', 'dnscry.pt-anon-baku-ipv4'] },
+{ server_name='dnscry.pt-singapore02-ipv4', via=['anon-cs-tokyo', 'dnscry.pt-anon-auckland-ipv4'] },
+{ server_name='dnscry.pt-jakarta-ipv4', via=['anon-tiarap', 'dnscry.pt-anon-adelaide-ipv4'] },
+{ server_name='dnscry.pt-bangkok-ipv4', via=['dnscry.pt-anon-bengaluru-ipv4', 'anon-saldns01-conoha-ipv4'] },
+{ server_name='dnscry.pt-newyork-ipv4', via=['anon-cs-dc', 'dnscry.pt-anon-allendale-ipv4'] },
+{ server_name='dnscry.pt-halifax-ipv4', via=['anon-cs-fl', 'dnscry.pt-anon-ashburn-ipv4'] },
+{ server_name='dnscry.pt-philadelphia-ipv4', via=['anon-cs-ga', 'dnscry.pt-anon-atlanta-ipv4'] },
+{ server_name='dnscry.pt-ashburn-ipv4', via=['anon-cs-il', 'dnscry.pt-anon-calgary-ipv4'] },
+{ server_name='dnscry.pt-allentown-ipv4', via=['anon-cs-montreal', 'dnscry.pt-anon-chicago-ipv4'] }
 ]
 [static]
